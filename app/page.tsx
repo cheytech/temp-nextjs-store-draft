@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+// import { Button } from "@/components/ui/button"
 import Hero from "@/components/home/Hero"
 import FeaturedProducts from "@/components/home/FeaturedProducts"
 import LoadingContainer from "@/components/global/LoadingContainer"

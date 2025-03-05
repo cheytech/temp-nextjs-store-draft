@@ -9,7 +9,7 @@ const ProductsGrid = ({products}:{products:Product[]}) => {
   return (
     <div className='pt-12 grid gap-4 md:grid-cols-12 lg:grid-cols-3'>
       {products.map((product)=>{
-        const{name,price,image} = product
+        const{name,image} = product
         const productId = product.id
         const dollarsAmount = formatCurrency(product.price)
         return <article key={productId} className='group relative'>
@@ -28,7 +28,7 @@ const ProductsGrid = ({products}:{products:Product[]}) => {
                 </CardContent>
             </Card>
             <div className='absolute top-7 right-7 z-5'>
-              <FavoriteToggleButton productId={productId} />
+              <FavoriteToggleButton />
             </div>
             </Link>
         </article>

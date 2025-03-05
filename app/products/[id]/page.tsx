@@ -8,10 +8,13 @@ import ProductRating from '@/components/single-product/ProductRating';
 import ShareButton from '@/components/single-product/ShareButton';
 import React from 'react';
 
-// Define correct type for params
-type ParamsType = { id: string };
+// Define the correct type
+interface SingleProductPageProps {
+  params: { id: string };
+}
 
-export default async function SingleProductPage({ params }: { params: ParamsType }) {
+// Fix function declaration
+export default async function SingleProductPage({ params }: SingleProductPageProps) {
   if (!params?.id) return <p>Invalid product ID</p>;
 
   const product = await fetchSingleProduct(params.id);
@@ -53,4 +56,9 @@ export default async function SingleProductPage({ params }: { params: ParamsType
       </div>
     </section>
   );
+}
+
+// Generate static params for dynamic routes
+export async function generateStaticParams() {
+  return [];
 }

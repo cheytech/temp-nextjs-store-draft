@@ -7,15 +7,11 @@ import AddToCart from '@/components/single-product/AddToCart';
 import ProductRating from '@/components/single-product/ProductRating';
 import ShareButton from '@/components/single-product/ShareButton';
 import React from 'react';
-// Main component
-export default async function SingleProductPage({ params }: {params:Promise<{id:string}>}) {
-  // Validate the product ID
-  if (!(await params)?.id) {
-    return <p>Invalid product ID</p>;
-  }
 
+// Main component
+export default async function SingleProductPage({ params }: { params: { id: string } }) {
   // Fetch the product data
-  const product = await fetchSingleProduct((await params).id);
+  const product = await fetchSingleProduct(params.id);
 
   // Handle case where product is not found
   if (!product) {
@@ -51,13 +47,13 @@ export default async function SingleProductPage({ params }: {params:Promise<{id:
           <div className='flex gap-x-8 items-center'>
             <h1 className='capitalize text-3xl font-bold'>{name}</h1>
             <div className='flex items-center gap-x-2'>
-              <FavoriteToggleButton />
-              <ShareButton />
+              <FavoriteToggleButton/>
+              <ShareButton/>
             </div>
           </div>
 
           {/* Product rating */}
-          <ProductRating />
+          <ProductRating/>
 
           {/* Company name */}
           <h4 className='text-xl mt-2'>{company}</h4>
@@ -71,7 +67,7 @@ export default async function SingleProductPage({ params }: {params:Promise<{id:
           <p className='mt-6 leading-8 text-muted-foreground'>{description}</p>
 
           {/* Add to cart button */}
-          <AddToCart />
+          <AddToCart/>
         </div>
       </div>
     </section>

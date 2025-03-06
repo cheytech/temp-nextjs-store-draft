@@ -7,21 +7,15 @@ import AddToCart from '@/components/single-product/AddToCart';
 import ProductRating from '@/components/single-product/ProductRating';
 import ShareButton from '@/components/single-product/ShareButton';
 import React from 'react';
-
-// Define the correct type for the component props
-interface SingleProductPageProps {
-  params: { id: string };
-}
-
 // Main component
-export default async function SingleProductPage({ params }: SingleProductPageProps) {
+export default async function SingleProductPage({ params }: {params:Promise<{id:string}>}) {
   // Validate the product ID
-  if (!params?.id) {
+  if (!(await params)?.id) {
     return <p>Invalid product ID</p>;
   }
 
   // Fetch the product data
-  const product = await fetchSingleProduct(params.id);
+  const product = await fetchSingleProduct((await params).id);
 
   // Handle case where product is not found
   if (!product) {
